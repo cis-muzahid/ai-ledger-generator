@@ -23,6 +23,7 @@
         <table id="datatable"  class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
+                    <th>Index</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Location</th>
@@ -48,6 +49,7 @@
             <tbody>
                 {% for entry in daily_entries %}
                     <tr>
+                        <td></td><!-- Index column will be filled by DataTables -->
                         <td>{{ entry.start_date }}</td>
                         <td>{{ entry.end_date }}</td>
                         <td>{{ entry.location }}</td>
