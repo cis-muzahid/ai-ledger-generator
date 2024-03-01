@@ -5,12 +5,22 @@
 
 {% block content %}
 
-            <!-- Main Content -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <h1 class="mt-5">Ubereats Daily Entry</h1>
+<!-- Main Content -->
+<!-- <main role="main" > -->
+    <!-- <main role="main" class="col-md-12 ml-sm-auto col-lg-12 "> -->
+    <main role="main" class="col-md-12 col-lg-12 px-4">
+    <h1 class="mt-5">Ubereats Daily Entry</h1>
 
-
-        <table class="table table-bordered">
+                <!-- Add this above your table -->
+        <div class="dataTables_length" id="datatable_length">
+        </div>
+        <label for="min-date">Start Date:</label>
+        <input type="date" id="min-date">
+        
+        <label for="max-date">End Date:</label>
+        <input type="date" id="max-date">
+        
+        <table id="datatable"  class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>Start Date</th>
@@ -36,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for entry in entries %}
+                {% for entry in daily_entries %}
                     <tr>
                         <td>{{ entry.start_date }}</td>
                         <td>{{ entry.end_date }}</td>

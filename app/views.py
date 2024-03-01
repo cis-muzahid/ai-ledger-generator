@@ -7,14 +7,14 @@ def index(request):
 
 def ubeaeats_daily_entry_view(request):
     # Query the database to get all entries
-    entries = UbeaeatsDailyEntry.objects.all()
+    daily_entries = UbeaeatsDailyEntry.objects.all()
 
     # You can pass 'entries' to the template for rendering
-    return render(request, 'ubeaeats_daily_entry.html', {'entries': entries})
+    return render(request, 'ubeaeats_daily_entry.html', {'daily_entries': daily_entries})
 
 def ubeaeats_weekly_entry_view(request):
     # Query the database to get all entries
-    entries = UbeaeatsWeeklyEntry.objects.all()
+    weekly_entries = UbeaeatsWeeklyEntry.objects.all()
 
-    # You can pass 'entries' to the template for rendering
-    return render(request, 'ubeaeats_weekly_entry.html', {'entries': entries})
+    # You can pass 'weekly_entries' to the template for rendering
+    return render(request, 'ubeaeats_weekly_entry.html', {'weekly_entries': weekly_entries})
