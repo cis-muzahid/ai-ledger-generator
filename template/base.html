@@ -31,15 +31,16 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
     <!-- DataTables Initialization Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
         $(document).ready(function() {
             $.fn.dataTable.ext.search.push(
                 function (settings, data, dataIndex) {
                     var min = $('#min-date').val();
                     var max = $('#max-date').val();
-                    var startDate = data[2]; // Assuming the date column is at index 2
+                    var startDate = moment(data[2], 'MMM. DD, YYYY'); // Parse date using moment.js
 
-                    if ((min === '' || startDate >= min) && (max === '' || startDate <= max)) {
+                    if ((min === '' || startDate.isSameOrAfter(min)) && (max === '' || startDate.isSameOrBefore(max))) {
                         return true;
                     }
 
@@ -54,8 +55,7 @@
                 "columnDefs": [
                     { "orderable": false, "targets": 0 } // Disable ordering on the first column (indexing column)
                 ],
-                "order": [[1, 'asc']], // Order by the second column (assuming your data starts from the second column)
-                "responsive": true // Enable responsive mode
+                "order": [[1, 'asc']] // Order by the second column (assuming your data starts from the second column)
             });
 
             // Add indexing (row numbering) to the first column
