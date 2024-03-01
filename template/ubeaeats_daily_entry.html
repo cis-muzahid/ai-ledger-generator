@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Custom Page Title{% endblock %}
+
+{% block content %}
+
+            <!-- Main Content -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <h1 class="mt-5">Ubereats Daily Entry</h1>
+
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Location</th>
+                    <th>Accounts Receivable</th>
+                    <th>Revenue</th>
+                    <th>Revenue Marketing Adjustment</th>
+                    <th>Discounts and Comps</th>
+                    <th>Commission</th>
+                    <th>Promotions on Items</th>
+                    <th>Sales Tax</th>
+                    <th>Tax on Refunds</th>
+                    <th>Tax on Promotions</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                    <th>Discrepancy</th>
+                    <th>Total Revenue</th>
+                    <th>Ad Marketing</th>
+                    <th>Total Ad and Marketing</th>
+                    <th>Total Tax Sales</th>
+                    <th>Total Discrepancy</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                    <tr>
+                        <td>{{ entry.start_date }}</td>
+                        <td>{{ entry.end_date }}</td>
+                        <td>{{ entry.location }}</td>
+                        <td>{{ entry.accounts_receivable }}</td>
+                        <td>{{ entry.revenue }}</td>
+                        <td>{{ entry.revenue_marketing_adjustment }}</td>
+                        <td>{{ entry.discounts_and_comps }}</td>
+                        <td>{{ entry.commission }}</td>
+                        <td>{{ entry.promotions_on_items }}</td>
+                        <td>{{ entry.sales_tax }}</td>
+                        <td>{{ entry.tax_on_refunds }}</td>
+                        <td>{{ entry.tax_on_promotions }}</td>
+                        <td>{{ entry.debit }}</td>
+                        <td>{{ entry.credit }}</td>
+                        <td>{{ entry.discrepancy }}</td>
+                        <td>{{ entry.total_revenue }}</td>
+                        <td>{{ entry.ad_marketing }}</td>
+                        <td>{{ entry.total_ad_and_marketing }}</td>
+                        <td>{{ entry.total_tax_sales }}</td>
+                        <td>{{ entry.total_discrepancy }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+{% endblock %}

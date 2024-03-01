@@ -1,0 +1,9 @@
+body{
+    background: #111111;
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+span{
+    color: rgb(255, 0, 136);
+}
