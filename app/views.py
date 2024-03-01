@@ -1,12 +1,9 @@
 from django.shortcuts import render
+from .models import UbeaeatsDailyEntry, UbeaeatsWeeklyEntry
 
 # Create your views here.
 def index(request):
     return render(request,"index.html")
-
-
-from django.shortcuts import render
-from .models import UbeaeatsDailyEntry, UbeaeatsWeeklyEntry
 
 def ubeaeats_daily_entry_view(request):
     # Query the database to get all entries
