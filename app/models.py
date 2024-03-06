@@ -1,6 +1,6 @@
 from django.db import models
 
-class UbeaeatsDailyEntry(models.Model):
+class ubereatsDailyEntry(models.Model):
     hash_id = models.CharField(max_length=255)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -24,9 +24,9 @@ class UbeaeatsDailyEntry(models.Model):
     total_discrepancy = models.FloatField()
 
     class Meta:
-        db_table = 'ubeaeats_daily_entry'
+        db_table = 'ubereats_daily_entry'
 
-class UbeaeatsWeeklyEntry(models.Model):
+class ubereatsWeeklyEntry(models.Model):
     hash_id = models.CharField(max_length=255)
     week = models.CharField(max_length=255)
     start_date = models.DateField()
@@ -51,4 +51,20 @@ class UbeaeatsWeeklyEntry(models.Model):
     location = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'ubeaeats_weekly_entry'
+        db_table = 'ubereats_weekly_entry'
+
+
+class UbereatsDailyJE(models.Model):
+    hash_id = models.CharField(max_length=255)
+    date = models.DateField()
+    name_match = models.CharField(max_length=255)
+    locations = models.CharField(max_length=255)
+    account = models.CharField(max_length=255)
+    debit = models.FloatField()
+    credit = models.FloatField()
+    debit_balance = models.FloatField()
+    credit_balance = models.FloatField()
+    discrepancy = models.FloatField()
+
+    class Meta:
+        db_table = 'ubereats_daily_je'

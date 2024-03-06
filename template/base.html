@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Ubeaeats{% endblock %}</title>
+    <title>{% block title %}ubereats{% endblock %}</title>
 
     <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
@@ -33,12 +33,12 @@
     <!-- DataTables Initialization Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script>
-        $(document).ready(function() {
+        function initializeDataTable(tableId, dateColumnIndex) {
             $.fn.dataTable.ext.search.push(
-                function (settings, data, dataIndex) {
+                function(settings, data, dataIndex) {
                     var min = $('#min-date').val();
                     var max = $('#max-date').val();
-                    var startDate = moment(data[2], 'MMM. DD, YYYY'); // Parse date using moment.js
+                    var startDate = moment(data[dateColumnIndex], 'MMM. DD, YYYY');
 
                     if ((min === '' || startDate.isSameOrAfter(min)) && (max === '' || startDate.isSameOrBefore(max))) {
                         return true;
@@ -48,17 +48,16 @@
                 }
             );
 
-            var dataTable = $('#datatable').DataTable({
+            var dataTable = $('#' + tableId).DataTable({
                 "lengthMenu": [[50, 100, 250, -1], [50, 100, 250, "All"]],
                 "pageLength": 50,
                 "pagingType": "full_numbers",
                 "columnDefs": [
-                    { "orderable": false, "targets": 0 } // Disable ordering on the first column (indexing column)
+                    { "orderable": false, "targets": 0 }
                 ],
-                "order": [[1, 'asc']] // Order by the second column (assuming your data starts from the second column)
+                "order": [[1, 'asc']]
             });
 
-            // Add indexing (row numbering) to the first column
             dataTable.on('order.dt search.dt', function() {
                 dataTable.column(0, { search: 'applied', order: 'applied' }).nodes().each(function(cell, i) {
                     cell.innerHTML = i + 1;
@@ -68,7 +67,7 @@
             $('#min-date, #max-date').on('change', function() {
                 dataTable.draw();
             });
-        });
+        }
     </script>
 
 
@@ -84,12 +83,17 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ubeaeats_daily_entry' %}">
+                            <a class="nav-link" href="{% url 'ubereats_daily_entry' %}">
                                 Ubereats Daily Entries
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'ubeaeats_weekly_entry' %}">
+                            <a class="nav-link" href="{% url 'ubereats_daily_je' %}">
+                                Ubereats Daily JE
+                            </a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'ubereats_weekly_entry' %}">
                                 Ubereats Weekly Entries
                             </a>
                         </li>

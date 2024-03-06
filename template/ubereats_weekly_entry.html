@@ -78,5 +78,11 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <!-- Call the reusable function for DataTables initialization -->
+            <script>
+                // Parameters: tableId, dateColumnIndex
+                initializeDataTable('datatable', 2);
+            </script>
+                        
         </main>
 {% endblock %}
